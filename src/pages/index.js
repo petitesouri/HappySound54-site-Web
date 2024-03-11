@@ -1,77 +1,109 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import React, { useEffect } from "react";
+// import { Link } from "gatsby";
+// import { StaticImage } from "gatsby-plugin-image"; 
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import * as styles from "../components/index.module.css"
+import Header from "../components/header";
+import Footer from "../components/footer"
+import Section from "../components/section";
+import Headband from "../components/headband";
+import Avis from "../components/avis";
+import Seo from "../components/seo";
+import Music from "../components/music";
+import "../styles/index.module.css"
 
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-  },
-  {
-    text: "Examples",
-    url: "https://github.com/gatsbyjs/gatsby/tree/master/examples",
-    description:
-      "A collection of websites ranging from very basic to complex/complete that illustrate how to accomplish specific tasks within your Gatsby sites.",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Learn how to add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-  },
-]
+// const links = [
+//   {
+//     text: "Tutorial",
+//     url: "https://www.gatsbyjs.com/docs/tutorial",
+//     description:
+//       "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
+//   },
+//   {
+//     text: "Examples",
+//     url: "https://github.com/gatsbyjs/gatsby/tree/master/examples",
+//     description:
+//       "A collection of websites ranging from very basic to complex/complete that illustrate how to accomplish specific tasks within your Gatsby sites.",
+//   },
+//   {
+//     text: "Plugin Library",
+//     url: "https://www.gatsbyjs.com/plugins",
+//     description:
+//       "Learn how to add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
+//   },
+//   {
+//     text: "Build and Host",
+//     url: "https://www.gatsbyjs.com/cloud",
+//     description:
+//       "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
+//   },
+// ]
 
-const samplePageLinks = [
-  {
-    text: "Page 2",
-    url: "page-2",
-    badge: false,
-    description:
-      "A simple example of linking to another page within a Gatsby site",
-  },
-  { text: "TypeScript", url: "using-typescript" },
-  { text: "Server Side Rendering", url: "using-ssr" },
-  { text: "Deferred Static Generation", url: "using-dsg" },
-]
+// const samplePageLinks = [
+//   {
+//     text: "Page 2",
+//     url: "page-2",
+//     badge: false,
+//     description:
+//       "A simple example of linking to another page within a Gatsby site",
+//   },
+//   { text: "TypeScript", url: "using-typescript" },
+//   { text: "Server Side Rendering", url: "using-ssr" },
+//   { text: "Deferred Static Generation", url: "using-dsg" },
+// ]
 
-const moreLinks = [
-  { text: "Join us on Discord", url: "https://gatsby.dev/discord" },
-  {
-    text: "Documentation",
-    url: "https://gatsbyjs.com/docs/",
-  },
-  {
-    text: "Starters",
-    url: "https://gatsbyjs.com/starters/",
-  },
-  {
-    text: "Showcase",
-    url: "https://gatsbyjs.com/showcase/",
-  },
-  {
-    text: "Contributing",
-    url: "https://www.gatsbyjs.com/contributing/",
-  },
-  { text: "Issues", url: "https://github.com/gatsbyjs/gatsby/issues" },
-]
+// const moreLinks = [
+//   { text: "Join us on Discord", url: "https://gatsby.dev/discord" },
+//   {
+//     text: "Documentation",
+//     url: "https://gatsbyjs.com/docs/",
+//   },
+//   {
+//     text: "Starters",
+//     url: "https://gatsbyjs.com/starters/",
+//   },
+//   {
+//     text: "Showcase",
+//     url: "https://gatsbyjs.com/showcase/",
+//   },
+//   {
+//     text: "Contributing",
+//     url: "https://www.gatsbyjs.com/contributing/",
+//   },
+//   { text: "Issues", url: "https://github.com/gatsbyjs/gatsby/issues" },
+// ]
 
-const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
+// const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
 
-const IndexPage = () => (
-  <Layout>
-    <div className={styles.textCenter}>
+const IndexPage = ({ children }) => {
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll('section');
+      const body = document.querySelector('body');
+      const windowHeight = window.innerHeight;
+      
+      sections.forEach(section => {
+        const sectionRect = section.getBoundingClientRect();
+        const sectionMiddle = sectionRect.top + sectionRect.height / 2;
+        const newClassName = section.getAttribute('data-classname');
+
+        if (sectionMiddle <= windowHeight / 2) {
+          body.className = newClassName || '';  
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  return (
+  <>
+  <Header siteTitle="Happy Sound 54"/>
+  {/* <Layout>
+     <div className={styles.textCenter}>
       <StaticImage
         src="../images/example.png"
         loading="eager"
@@ -114,9 +146,48 @@ const IndexPage = () => (
         <a href={`${link.url}${utmParameters}`}>{link.text}</a>
         {i !== moreLinks.length - 1 && <> · </>}
       </React.Fragment>
-    ))}
-  </Layout>
-)
+    ))} 
+  </Layout> */}
+  <main>
+    <Section 
+      className="Intro" 
+      dataClassname="background1"
+      titre="Avec Deejay Fredowski passez un pur moment festif" 
+      texte="Moi, c'est Fred, alias Deejay Fredowski. Cela fait maintenant plus de 10 ans que j'anime vos soirées dans le Grand-Est de la France." 
+      >
+      <p>ICI LIEN VERS LISTE MATOS ET PRESTATAIRES</p>
+    </Section>
+
+    <Section 
+      className="avis" 
+      dataClassname="background2"
+      titre="AVIS"
+    >
+      <Avis/>
+    </Section>
+    <Section 
+      className="ambiance"
+      dataClassname="background3"
+      titre="AMBIANCES" 
+      >
+        <Music />
+        <Headband/>
+    </Section>
+    
+    <Section 
+      className="news" 
+      dataClassname="background1"
+      titre="DERNIERES NOUVELLES"
+      >
+      <div className="news-cards">
+        <p>Suivez-moi sur Facebook</p>
+        {/* <FeedFacebook /> */}
+      </div> 
+    </Section>
+  </main>
+  < Footer />
+  </>
+)}
 
 /**
  * Head export to define metadata for the page
