@@ -1,0 +1,17 @@
+footer {
+    height: 320px;
+    color: black;
+    background-color: #D9D9D9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+.footer-left-section, .footer-right-section{
+    height: 100%;
+    background-color: inherit;
+}
+footer img {
+    width: 230px;
+}

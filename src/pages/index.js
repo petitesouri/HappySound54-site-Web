@@ -2,14 +2,13 @@ import React, { useEffect } from "react";
 // import { Link } from "gatsby";
 // import { StaticImage } from "gatsby-plugin-image"; 
 
-import Header from "../components/header";
-import Footer from "../components/footer"
+import Layout from "../components/layout"
 import Section from "../components/section";
 import Headband from "../components/headband";
 import Avis from "../components/avis";
 import Seo from "../components/seo";
 import Music from "../components/music";
-import "../styles/index.module.css"
+// import "../styles/index.module.css"
 
 // const links = [
 //   {
@@ -101,55 +100,8 @@ const IndexPage = ({ children }) => {
 
   return (
   <>
-  <Header siteTitle="Happy Sound 54"/>
-  {/* <Layout>
-     <div className={styles.textCenter}>
-      <StaticImage
-        src="../images/example.png"
-        loading="eager"
-        width={64}
-        quality={95}
-        formats={["auto", "webp", "avif"]}
-        alt=""
-        style={{ marginBottom: `var(--space-3)` }}
-      />
-      <h1>
-        Welcome to <b>Gatsby!</b>
-      </h1>
-      <p className={styles.intro}>
-        <b>Example pages:</b>{" "}
-        {samplePageLinks.map((link, i) => (
-          <React.Fragment key={link.url}>
-            <Link to={link.url}>{link.text}</Link>
-            {i !== samplePageLinks.length - 1 && <> · </>}
-          </React.Fragment>
-        ))}
-        <br />
-        Edit <code>src/pages/index.js</code> to update this page.
-      </p>
-    </div>
-    <ul className={styles.list}>
-      {links.map(link => (
-        <li key={link.url} className={styles.listItem}>
-          <a
-            className={styles.listItemLink}
-            href={`${link.url}${utmParameters}`}
-          >
-            {link.text} ↗
-          </a>
-          <p className={styles.listItemDescription}>{link.description}</p>
-        </li>
-      ))}
-    </ul>
-    {moreLinks.map((link, i) => (
-      <React.Fragment key={link.url}>
-        <a href={`${link.url}${utmParameters}`}>{link.text}</a>
-        {i !== moreLinks.length - 1 && <> · </>}
-      </React.Fragment>
-    ))} 
-  </Layout> */}
-  <main>
-    <Section 
+  <Layout>
+  <Section 
       className="Intro" 
       dataClassname="background1"
       titre="Avec Deejay Fredowski passez un pur moment festif" 
@@ -157,7 +109,6 @@ const IndexPage = ({ children }) => {
       >
       <p>ICI LIEN VERS LISTE MATOS ET PRESTATAIRES</p>
     </Section>
-
     <Section 
       className="avis" 
       dataClassname="background2"
@@ -172,8 +123,7 @@ const IndexPage = ({ children }) => {
       >
         <Music />
         <Headband/>
-    </Section>
-    
+    </Section>    
     <Section 
       className="news" 
       dataClassname="background1"
@@ -183,9 +133,8 @@ const IndexPage = ({ children }) => {
         <p>Suivez-moi sur Facebook</p>
         {/* <FeedFacebook /> */}
       </div> 
-    </Section>
-  </main>
-  < Footer />
+    </Section> 
+  </Layout>
   </>
 )}
 

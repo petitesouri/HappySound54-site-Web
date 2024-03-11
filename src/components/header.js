@@ -25,7 +25,7 @@ const Header = ({ siteTitle }) => {
   const handleClickContact = () => {
     setShowContactForm(true);
   };
-
+  console.log(showContactForm)
   // const handleCloseContactForm = () => {
   //   setShowContactForm(false);
   // };
@@ -39,7 +39,7 @@ const Header = ({ siteTitle }) => {
     {
       text: "Mariage",
       src: SmileyMariage,
-      url: "mariage",
+      url: "/mariage",
       badge: false,
       description:
         "Animations de votre mariage",
@@ -47,7 +47,7 @@ const Header = ({ siteTitle }) => {
     {
       text: "Soirées à thème",
       src: SmileySoiree,
-      url: "soirees",
+      url: "/soirees",
       badge: false,
       description:
         "Animations de vos soirées",
@@ -55,7 +55,7 @@ const Header = ({ siteTitle }) => {
     {
       text: "Evènements professionnels",
       src: SmileyEvenement,
-      url: "evenements",
+      url: "/evenement",
       badge: false,
       description:
         "Animations de vos évènements professionnels",

@@ -27,10 +27,10 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `Roboto`, // vous pouvez spécifier les polices que vous souhaitez utiliser ici
-          `source sans pro\:300,400,400i,700` // vous pouvez également spécifier les styles et variantes de police
+          `Baloo 2\:400..800`,
+          `Hurricane`,
         ],
-        display: 'swap' // Optionnel : permet de charger les polices en mode d'affichage différé pour améliorer les performances
+        display: 'swap'
       }
     },
     // {
