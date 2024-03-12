@@ -62,7 +62,11 @@ const Modal = ({ isOpen, onClose, modalType }) => {
             modalContent = <div>Contenu pour les prestataires</div>;
             break;
         case 'case3':
-            modalContent = <div>Contenu pour CONTACT</div>;
+            modalContent = 
+                <>
+                <p>e-mail : chefenski@orange.fr</p>
+                <p>Tél : 06 06 06 06 06</p>
+                </>;
             break;
         default:
             modalContent = <div>Contenu par défaut</div>;

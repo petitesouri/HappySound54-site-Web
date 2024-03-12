@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-// import { Helmet } from "react-helmet"
 
 import Modal from "../components/modal";
 import Logo from "../images/Logo.png"
 import SmileyMariage from "../images/Smiley1.png";
 import SmileySoiree from "../images/Smiley2.png";
 import SmileyEvenement from "../images/Smiley3.png";
-// import ContactForm from '../components/ContactForm';
+import SmileyAccueil from "../images/Smiley4.png";
 
-const Header = ({ siteTitle }) => {
-  // const [showContactForm, setShowContactForm] = useState(false);
+const Header = ({ siteTitle, excludeIndexZero }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalType, setModalType] = useState('');
 
@@ -32,20 +30,15 @@ const openModal = (type) => {
 
 const closeModal = () => setIsOpen(false);
 
-  // const handleClickContact = () => {
-  //   setShowContactForm(true);
-  // };
-  // console.log(showContactForm)
-  // const handleCloseContactForm = () => {
-  //   setShowContactForm(false);
-  // };
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // const toggleMenu = () => {
-  //   setIsMenuOpen(!isMenuOpen);
-  // };
-
   const samplePageLinks = [
+    {
+      text: "Accueil Happy Sound 54",
+      src: SmileyAccueil,
+      url: "/",
+      badge: false,
+      description:
+        "Retour à l'accueil de Happy Sound 54",
+    },
     {
       text: "Mariage",
       src: SmileyMariage,
@@ -69,19 +62,15 @@ const closeModal = () => setIsOpen(false);
       badge: false,
       description:
         "Animations de vos évènements professionnels",
-    },
+    }
     // { text: "TypeScript", url: "using-typescript" },
     // { text: "Server Side Rendering", url: "using-ssr" },
     // { text: "Deferred Static Generation", url: "using-dsg" },
   ];
-
+  
   return (
   <header>
     <h1> {siteTitle || data.site.siteMetadata.title}</h1>
-    {/* <Helmet>
-      <html lang="fr" />
-      {/* Ajouter d'autres éléments head ici au besoin
-    </Helmet> */}
     
     <Link to="/" className="header-link">
       <img className="header-link__logo" src={Logo} alt="Logo" />
@@ -89,22 +78,17 @@ const closeModal = () => setIsOpen(false);
     <nav className="header-nav">
       {samplePageLinks.map((link, i) => (
           <React.Fragment key={link.url}>
-            <li className="header-nav__link-button">
-              <Link to={link.url}>
-                <img src={link.src} alt={link.description}/>
-              </Link>
-            </li>
-            {/* {i !== samplePageLinks.length - 1 } */}
+            {excludeIndexZero && i === 0 ? null : (
+              <li className="header-nav__link-button">
+                <Link to={link.url}>
+                  <img src={link.src} alt={link.description} />
+                </Link>
+              </li>
+            )}
           </React.Fragment>
       ))}
     </nav>
     <button onClick={() => openModal('case3')}>CONTACT</button>
-    {/* {showContactForm && <div className="overlay" onClick={handleCloseContactForm}>
-        <div className="modal">
-        <button className="modal-close" onClick={handleCloseContactForm}>&times;</button>
-            <ContactForm />
-        </div>
-    </div>} */}
     <Modal isOpen={isOpen} onClose={closeModal} modalType={modalType} />
   </header>
 )}

@@ -119,7 +119,7 @@ const IndexPage = ({ children }) => {
 
   return (
   <>
-  <Layout>
+  <Layout excludeIndexZero>
   <Section 
       className="Intro" 
       dataClassname="background1"
