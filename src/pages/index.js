@@ -132,15 +132,15 @@ const IndexPage = ({ children }) => {
       
       Faites confiance à Happy Sound 54 pour transformer vos événements en des moments inoubliables. Contactez-nous dès aujourd'hui pour réserver votre date et laissez-nous créer ensemble une soirée exceptionnelle!" 
       >
-      <p onClick={handleParagraphClick}>
+      <p>
         Lien vers 
-          <span style={{ color: 'blue' }}>
+          <button onClick={handleParagraphClick}>
             matériel
-          </span> 
+          </button> 
         et 
-          <span style={{ color: 'green' }}>
+          <button onClick={handleParagraphClick}>
             prestataires
-          </span>
+          </button>
       </p>
     </Section>
     <Section 

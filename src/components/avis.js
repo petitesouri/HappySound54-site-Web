@@ -42,34 +42,66 @@ const Avis = () => {
         setCurrentSlide(index);
         setTranslateValue(index * -350);
     };
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'ArrowLeft') {
+            prevSlide();
+        } else if (event.key === 'ArrowRight') {
+            nextSlide();
+        }
+    };
   
     return ( 
-        <div className="slider-container">
+        <div 
+            className="slider-container"
+            >
             <div 
                 className="slider" 
                 style={{ 
                     transition: 'transform 0.5s ease', 
                     transform: `translateX(${translateValue}px)` 
-                    }}>
-                {avis.map((avisItem, index) => (
-                <figure
-                    key={index}
-                    className={index === currentSlide ? "slider-items active" : "slider-items"}
+                }}
                 >
-                    <p className='slider-items__text'>{avisItem.texte}</p>
-                    <p className='slider-items__author'>- {avisItem.auteur}</p>
-                </figure>
+                {avis.map((avisItem, index) => (
+                    <figure
+                        key={index}
+                        className={index === currentSlide ? "slider-items active" : "slider-items"}
+                    >
+                        <p className='slider-items__text'>{avisItem.texte}</p>
+                        <p className='slider-items__author'>- {avisItem.auteur}</p>
+                    </figure>
                 ))}
             </div>
-            <button className="prev" onClick={prevSlide}><img src={ArrowLeft} alt="Prev" /></button>
-            <button className="next" onClick={nextSlide}><img src={ArrowRight} alt="Next" /></button>
+            <button 
+                className="prev" 
+                name='button previous'
+                onClick={prevSlide} 
+                onKeyDown={handleKeyDown}
+                tabIndex={0}
+                >
+                <img src={ArrowLeft} alt="button previous" />
+            </button>
+            <button 
+                className="next" 
+                name='button next'
+                onClick={nextSlide} 
+                onKeyDown={handleKeyDown}
+                tabIndex={0}
+                >
+                <img src={ArrowRight} alt="button next" />
+            </button>
             <div className="dots">
                 {avis.map((_, index) => (
-                <span
+                <button
                     key={index}
                     className={index === currentSlide ? "dot active" : "dot"}
+                    name={currentSlide}
                     onClick={() => goToSlide(index)}
-                />
+                    onKeyDown={handleKeyDown}
+                    tabIndex={0}
+                >
+                    {index}
+                </button>
                 ))}
             </div>
         </div>

@@ -36,12 +36,15 @@ const Music = () => {
     return (
         <div className='ambiance-musics'> 
             {musiques.map((musique, index) => (
-                <figure key={index} onClick={() => handleImageClick(index)} style={{ cursor: 'pointer' }}>
-                    <figcaption>
-                        <img src={index === 1 ? PosteRadio : Ecouteurs} alt={musique.alt} />
-                    </figcaption>
-                    <audio id={`audio-${index}`} src={musique.src} style={{ display: 'none' }} />
-                </figure>
+                <button 
+                    key={index} 
+                    onClick={() => handleImageClick(index)}
+                    >
+                    <img src={index === 1 ? PosteRadio : Ecouteurs} alt={musique.alt} />                   
+                    <audio id={`audio-${index}`} src={musique.src} style={{ display: 'none' }}>
+                        <track kind="captions" src="musique" srcLang="fr" label="French captions" />   
+                    </audio>
+                </button>
             ))}
         </div>
     );

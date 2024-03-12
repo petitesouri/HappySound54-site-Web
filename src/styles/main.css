@@ -13,6 +13,7 @@ body {
     color: white;
     background-color: var(--color-grey);
     text-align: center;
+    cursor: 'pointer';
 }
 h1 {
     display: none;
@@ -32,6 +33,9 @@ li {
 figure {
     margin-inline-start: 0;
     margin-block-start: 0;
+}
+body:focus {
+    outline: 2px solid blue; /* Ajoute un contour bleu autour de l'élément en focus */
 }
 
 /* All pages */
