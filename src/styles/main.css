@@ -3,6 +3,8 @@
 @import 'layout.css';
 @import '../styles/components/header.css';
 @import '../styles/components/footer.css';
+@import '../styles/components/avis.css';
+@import '../styles/components/modal.css';
 
 /* Général */
 body {
@@ -27,6 +29,10 @@ ul {
 li {
     list-style: none;
 }
+figure {
+    margin-inline-start: 0;
+    margin-block-start: 0;
+}
 
 /* All pages */
 main {
@@ -36,6 +42,6 @@ main {
     margin-top: 600px;
 }
 section {
-    height: 600px;
+    height: var(--height-section);
     background-color: var(--color-grey);
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // import { Link } from "gatsby";
 // import { StaticImage } from "gatsby-plugin-image"; 
 
@@ -8,7 +8,7 @@ import Headband from "../components/headband";
 import Avis from "../components/avis";
 import Seo from "../components/seo";
 import Music from "../components/music";
-// import "../styles/index.module.css"
+import Modal from "../components/modal";
 
 // const links = [
 //   {
@@ -74,6 +74,9 @@ import Music from "../components/music";
 // const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
 
 const IndexPage = ({ children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [modalType, setModalType] = useState('');
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('section');
@@ -98,6 +101,22 @@ const IndexPage = ({ children }) => {
     };
   }, []);
 
+  const openModal = (type) => {
+    setModalType(type);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => setIsOpen(false);
+
+  const handleParagraphClick = (event) => {
+    const text = event.target.textContent.toLowerCase();
+    if (text.includes('matériel')) {
+        openModal('case1');
+    } else if (text.includes('prestataire')) {
+        openModal('case2');
+    }
+};
+
   return (
   <>
   <Layout>
@@ -105,9 +124,24 @@ const IndexPage = ({ children }) => {
       className="Intro" 
       dataClassname="background1"
       titre="Avec Deejay Fredowski passez un pur moment festif" 
-      texte="Moi, c'est Fred, alias Deejay Fredowski. Cela fait maintenant plus de 10 ans que j'anime vos soirées dans le Grand-Est de la France." 
+      texte="Bienvenue sur le site de Happy Sound 54, votre DJ professionnel pour des soirées inoubliables! Avec une passion débordante pour la musique et une expertise dans l'animation d'événements, nous sommes là pour donner vie à vos fêtes, mariages, anniversaires et tout autre événement spécial.
+
+      Notre mission est de créer une ambiance enivrante et de faire vibrer vos invités sur le dancefloor. Avec une vaste sélection de musiques adaptées à tous les goûts et une expérience riche dans le domaine, nous garantissons une soirée mémorable, où chaque moment sera une célébration de la musique et de la joie.
+      
+      En tant que DJ professionnel, nous nous engageons à offrir un service personnalisé, en accord avec vos préférences musicales et le style de votre événement. Notre équipement de pointe et notre expertise technique garantissent un son de haute qualité et une performance sans faille, pour que vous puissiez profiter pleinement de chaque instant de votre soirée.
+      
+      Faites confiance à Happy Sound 54 pour transformer vos événements en des moments inoubliables. Contactez-nous dès aujourd'hui pour réserver votre date et laissez-nous créer ensemble une soirée exceptionnelle!" 
       >
-      <p>ICI LIEN VERS LISTE MATOS ET PRESTATAIRES</p>
+      <p onClick={handleParagraphClick}>
+        Lien vers 
+          <span style={{ color: 'blue' }}>
+            matériel
+          </span> 
+        et 
+          <span style={{ color: 'green' }}>
+            prestataires
+          </span>
+      </p>
     </Section>
     <Section 
       className="avis" 
@@ -133,7 +167,8 @@ const IndexPage = ({ children }) => {
         <p>Suivez-moi sur Facebook</p>
         {/* <FeedFacebook /> */}
       </div> 
-    </Section> 
+    </Section>
+    <Modal isOpen={isOpen} onClose={closeModal} modalType={modalType} /> 
   </Layout>
   </>
 )}

@@ -1,47 +1,78 @@
-// import React, { useState, useEffect } from 'react';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
 // import Slider from "react-slick";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 
-// import avisData from "../data/avis.json";
-// import ArrowLeft from "../images/left-arrow.png";
-// import ArrowRight from "../images/right-arrow.png";
+import avisData from "../data/avis.json";
+import ArrowLeft from "../images/left-arrow.png";
+import ArrowRight from "../images/right-arrow.png";
 
 const Avis = () => {
-    // const [data, setData] = useState([]);
-    // const [currentIndex, setCurrentIndex] = useState(0);
-  
-    // const handleNext = () => {
-    //   setCurrentIndex((prevIndex) => (prevIndex === data.length - 1 ? 0 : prevIndex + 1));
-    // };
-  
-    // const handlePrev = () => {
-    //   setCurrentIndex((prevIndex) => (prevIndex === 0 ? data.length - 1 : prevIndex - 1));
-    // };
+    const [avis, setAvis] = useState([]);
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [translateValue, setTranslateValue] = useState(0);
 
-    // const settings = {
-    //     dots: true,
-    //     speed: 500,
-    //     slidesToShow: 3,
-    //     slidesToScroll: 1,
-    //     infinite: true,
-    //     prevArrow: <button><img src={ArrowLeft} alt="Prev" /></button>,
-    //     nextArrow: <button><img src={ArrowRight} alt="Next" /></button>,
-    // };
+    useEffect(() => {
+        setAvis(avisData.avis);
+    }, []);
+    
+    const nextSlide = () => {
+        const nextIndex = (currentSlide + 1) % avis.length;
+
+        setCurrentSlide((currentSlide + 1) % avis.length);
+        setTranslateValue(translateValue - 350);
+        if (nextIndex === avis.length - 1) {
+            setCurrentSlide(0);
+            setTranslateValue(0);
+        }
+    };
+    
+    const prevSlide = () => {
+        const prevIndex = (currentSlide - 1 + avis.length) % avis.length;
+        setCurrentSlide((currentSlide - 1 + avis.length) % avis.length);
+        setTranslateValue(translateValue + 350);
+        if (prevIndex === 0) {
+            setCurrentSlide(avis.length - 1);
+            setTranslateValue(avis.length - 1);
+        }
+    };
+    
+    const goToSlide = (index) => {
+        setCurrentSlide(index);
+        setTranslateValue(index * -350);
+    };
   
     return ( 
-        <>  
-        <h1>SLIDER</h1>     
-        {/* <Slider {...settings} className='slider'>
-            {avisData.avis.map(avis => (
-                <div key={avis.id} className='slider-items'>
-                    <p className='slider-items__text'>{avis.texte}</p>
-                    <p className='slider-items__author'>- {avis.auteur}</p>
-                </div>
-            ))}
-        </Slider> */}
-        </>
+        <div className="slider-container">
+            <div 
+                className="slider" 
+                style={{ 
+                    transition: 'transform 0.5s ease', 
+                    transform: `translateX(${translateValue}px)` 
+                    }}>
+                {avis.map((avisItem, index) => (
+                <figure
+                    key={index}
+                    className={index === currentSlide ? "slider-items active" : "slider-items"}
+                >
+                    <p className='slider-items__text'>{avisItem.texte}</p>
+                    <p className='slider-items__author'>- {avisItem.auteur}</p>
+                </figure>
+                ))}
+            </div>
+            <button className="prev" onClick={prevSlide}><img src={ArrowLeft} alt="Prev" /></button>
+            <button className="next" onClick={nextSlide}><img src={ArrowRight} alt="Next" /></button>
+            <div className="dots">
+                {avis.map((_, index) => (
+                <span
+                    key={index}
+                    className={index === currentSlide ? "dot active" : "dot"}
+                    onClick={() => goToSlide(index)}
+                />
+                ))}
+            </div>
+        </div>
     );
   }
 

@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
 // import { Helmet } from "react-helmet"
 
+import Modal from "../components/modal";
 import Logo from "../images/Logo.png"
 import SmileyMariage from "../images/Smiley1.png";
 import SmileySoiree from "../images/Smiley2.png";
@@ -10,7 +11,9 @@ import SmileyEvenement from "../images/Smiley3.png";
 // import ContactForm from '../components/ContactForm';
 
 const Header = ({ siteTitle }) => {
-  const [showContactForm, setShowContactForm] = useState(false);
+  // const [showContactForm, setShowContactForm] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [modalType, setModalType] = useState('');
 
   const data = useStaticQuery(graphql`
   query SiteTitleQuery {
@@ -22,10 +25,17 @@ const Header = ({ siteTitle }) => {
   }
 `)
 
-  const handleClickContact = () => {
-    setShowContactForm(true);
-  };
-  console.log(showContactForm)
+const openModal = (type) => {
+  setModalType(type);
+  setIsOpen(true);
+};
+
+const closeModal = () => setIsOpen(false);
+
+  // const handleClickContact = () => {
+  //   setShowContactForm(true);
+  // };
+  // console.log(showContactForm)
   // const handleCloseContactForm = () => {
   //   setShowContactForm(false);
   // };
@@ -88,13 +98,14 @@ const Header = ({ siteTitle }) => {
           </React.Fragment>
       ))}
     </nav>
-    <button onClick={handleClickContact}>CONTACT</button>
+    <button onClick={() => openModal('case3')}>CONTACT</button>
     {/* {showContactForm && <div className="overlay" onClick={handleCloseContactForm}>
         <div className="modal">
         <button className="modal-close" onClick={handleCloseContactForm}>&times;</button>
             <ContactForm />
         </div>
     </div>} */}
+    <Modal isOpen={isOpen} onClose={closeModal} modalType={modalType} />
   </header>
 )}
 
