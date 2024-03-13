@@ -20,7 +20,8 @@ $blue-color:#16D4F7;
     --color-grey: #3A353A;
     --color-yellow: #FDE400;
     --color-blue: #6272F0;
-    --height-section: 600px;
+    --color-blue-light: #16D4F7;
     --width-figure: 350px;
-  }
-  
+    --width-header-buttons: 100px;
+    --width-music-buttons: 320px;
+  }  

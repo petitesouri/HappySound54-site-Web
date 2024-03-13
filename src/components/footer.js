@@ -12,7 +12,7 @@ const Footer = () => {
 
     return (
         <footer>
-            <div>
+            <div className="footer-section">
                 <section className="footer-left-section">
                     <ul>
                         <li>N°SIRET : 887 926 905 00019</li>
@@ -34,7 +34,7 @@ const Footer = () => {
             </div>
             <a href="https://officewebdesign.fr/" target="blank" rel="noopener noreferrer">
                 Site réalisé par
-                <img src={OWD} alt="Office Web Design"/>
+                <img className="logo-OWD" src={OWD} alt="Office Web Design"/>
             </a>
         </footer>
     )

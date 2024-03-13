@@ -12,7 +12,7 @@ module.exports = {
     title: `Happy Sound 54, animez vos soirées à Toul, Nancy et toute la région Grand-Est de la France`,
     description: `Je décris ici mon site, cette description s'affichera dans les résultats de recherche.`,
     author: `Office Web Design`,
-    siteUrl: `https://happysound54.fr/`,
+    siteUrl: `http://localhost:8000/`, // Modifier ici l'url du site web
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -33,6 +33,7 @@ module.exports = {
         display: 'swap'
       }
     },
+
     // {
     //   resolve: `gatsby-plugin-sitemap`,
     //   options: {

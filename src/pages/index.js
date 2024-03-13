@@ -9,6 +9,7 @@ import Avis from "../components/avis";
 import Seo from "../components/seo";
 import Music from "../components/music";
 import Modal from "../components/modal";
+import FacebookPosts from "../components/facebookPost";
 
 // const links = [
 //   {
@@ -119,27 +120,27 @@ const IndexPage = ({ children }) => {
 
   return (
   <>
-  <Layout excludeIndexZero>
+  <Layout >
   <Section 
       className="Intro" 
       dataClassname="background1"
       titre="Avec Deejay Fredowski passez un pur moment festif" 
-      texte="Bienvenue sur le site de Happy Sound 54, votre DJ professionnel pour des soirées inoubliables! Avec une passion débordante pour la musique et une expertise dans l'animation d'événements, nous sommes là pour donner vie à vos fêtes, mariages, anniversaires et tout autre événement spécial.
-
-      Notre mission est de créer une ambiance enivrante et de faire vibrer vos invités sur le dancefloor. Avec une vaste sélection de musiques adaptées à tous les goûts et une expérience riche dans le domaine, nous garantissons une soirée mémorable, où chaque moment sera une célébration de la musique et de la joie.
-      
-      En tant que DJ professionnel, nous nous engageons à offrir un service personnalisé, en accord avec vos préférences musicales et le style de votre événement. Notre équipement de pointe et notre expertise technique garantissent un son de haute qualité et une performance sans faille, pour que vous puissiez profiter pleinement de chaque instant de votre soirée.
-      
-      Faites confiance à Happy Sound 54 pour transformer vos événements en des moments inoubliables. Contactez-nous dès aujourd'hui pour réserver votre date et laissez-nous créer ensemble une soirée exceptionnelle!" 
       >
-      <p>
-        Lien vers 
+      <div className="Intro-article__text">
+        <p>Bienvenue sur le site de Happy Sound 54, votre DJ professionnel pour des soirées inoubliables!</p>
+        <p>Avec une passion débordante pour la musique et une expertise dans l'animation d'événements, nous sommes là pour donner  vie à vos fêtes, mariages, anniversaires et tout autre événement spécial.
+        <br/>Notre mission est de créer une ambiance enivrante et de faire vibrer vos invités sur le dancefloor. Avec une vaste sélection de musiques adaptées à tous les goûts et une expérience riche dans le domaine, nous garantissons une soirée mémorable, où chaque moment sera une célébration de la musique et de la joie.
+        <br/>Notre service est personnalisé, en accord avec vos préférences musicales et le style de votre événement. Notre équipement de pointe et notre expertise technique garantissent un son de haute qualité et une performance sans faille, pour que vous puissiez profiter pleinement de chaque instant de votre soirée.</p>
+        <p>Faites confiance à Happy Sound 54 pour transformer vos événements en des moments inoubliables. <br/>Contactez-nous dès aujourd'hui pour réserver votre date et laissez-nous créer ensemble une soirée exceptionnelle!</p>
+      </div>
+      <p className="Intro-article__list">
+        Liste 
           <button onClick={handleParagraphClick}>
-            matériel
+            du matériel
           </button> 
         et 
           <button onClick={handleParagraphClick}>
-            prestataires
+            des prestataires
           </button>
       </p>
     </Section>
@@ -155,6 +156,7 @@ const IndexPage = ({ children }) => {
       dataClassname="background3"
       titre="AMBIANCES" 
       >
+        <p className="ambiance-text">Cliquez pour écouter un extrait</p>
         <Music />
         <Headband/>
     </Section>    
@@ -165,7 +167,7 @@ const IndexPage = ({ children }) => {
       >
       <div className="news-cards">
         <p>Suivez-moi sur Facebook</p>
-        {/* <FeedFacebook /> */}
+        <FacebookPosts />
       </div> 
     </Section>
     <Modal isOpen={isOpen} onClose={closeModal} modalType={modalType} /> 

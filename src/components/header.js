@@ -9,7 +9,7 @@ import SmileySoiree from "../images/Smiley2.png";
 import SmileyEvenement from "../images/Smiley3.png";
 import SmileyAccueil from "../images/Smiley4.png";
 
-const Header = ({ siteTitle, excludeIndexZero }) => {
+const Header = ({ siteTitle }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalType, setModalType] = useState('');
 
@@ -67,7 +67,9 @@ const closeModal = () => setIsOpen(false);
     // { text: "Server Side Rendering", url: "using-ssr" },
     // { text: "Deferred Static Generation", url: "using-dsg" },
   ];
-  
+
+  const isHomePage = window.location.pathname === '/';
+
   return (
   <header>
     <h1> {siteTitle || data.site.siteMetadata.title}</h1>
@@ -76,17 +78,20 @@ const closeModal = () => setIsOpen(false);
       <img className="header-link__logo" src={Logo} alt="Logo" />
     </Link>
     <nav className="header-nav">
-      {samplePageLinks.map((link, i) => (
-          <React.Fragment key={link.url}>
-            {excludeIndexZero && i === 0 ? null : (
-              <li className="header-nav__link-button">
-                <Link to={link.url}>
-                  <img src={link.src} alt={link.description} />
-                </Link>
-              </li>
-            )}
-          </React.Fragment>
-      ))}
+      <li className={isHomePage ? 'header-nav__link-button active' : 'header-nav__link-button'}>
+        <Link to={samplePageLinks[0].url}>
+          <img src={samplePageLinks[0].src} alt={samplePageLinks[0].description} />
+        </Link>
+      </li>
+      <div className="header-nav__link">
+        {samplePageLinks.slice(1).map((link, i) => (
+          <li key={link.url} className="header-nav__link-button">
+            <Link to={link.url}>
+              <img src={link.src} alt={link.description} />
+            </Link>
+          </li>
+        ))}
+      </div>
     </nav>
     <button onClick={() => openModal('case3')}>CONTACT</button>
     <Modal isOpen={isOpen} onClose={closeModal} modalType={modalType} />

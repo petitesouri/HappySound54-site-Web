@@ -4,10 +4,10 @@ import Header from "./header"
 import Footer from "./footer"
 import "../styles/main.css"
 
-const Layout = ({ children, excludeIndexZero }) => {  
+const Layout = ({ children }) => {  
   return (
     <>
-      <Header siteTitle="Happy Sound 54" excludeIndexZero={excludeIndexZero}/>
+      <Header siteTitle="Happy Sound 54"/>
       <main>{children}</main>
       <Footer />
     </>

@@ -8,9 +8,9 @@ import PosteRadio from "../images/poste-radio.png"
 
 const Music = () => {
     const musiques = [
-        { src: Mix1, alt: 'ambiance festive' },
-        { src: Mix2, alt: 'ambiance electro' },
-        { src: Mix3, alt: 'ambiance festive' }
+        { src: Mix1, alt: 'AMBIANCE FESTIVE' },
+        { src: Mix2, alt: 'AMBIANCE ELECTRO' },
+        { src: Mix3, alt: 'AMBIANCE LOUNGE' }
     ];
 
     const [playingIndex, setPlayingIndex] = useState(null);
@@ -38,12 +38,17 @@ const Music = () => {
             {musiques.map((musique, index) => (
                 <button 
                     key={index} 
+                    className={index === 1 ?'ambiance-musics__button-radio' : "ambiance-musics__button"}
                     onClick={() => handleImageClick(index)}
-                    >
-                    <img src={index === 1 ? PosteRadio : Ecouteurs} alt={musique.alt} />                   
+                    >                        
+                    <img 
+                        src={index === 1 ? PosteRadio : Ecouteurs} 
+                        className={index === 1 ? "radio" : "headphones"}
+                        alt={musique.alt} />                   
                     <audio id={`audio-${index}`} src={musique.src} style={{ display: 'none' }}>
                         <track kind="captions" src="musique" srcLang="fr" label="French captions" />   
                     </audio>
+                    <p>{musique.alt}</p>
                 </button>
             ))}
         </div>
