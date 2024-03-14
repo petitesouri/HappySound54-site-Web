@@ -1,31 +1,23 @@
-import React from "react";
-// import { graphql, useStaticQuery } from "gatsby";
+import React from 'react';
 
-const FacebookPosts = () => {
-//   const data = useStaticQuery(graphql`
-//     query {
-//       allFacebookPost {
-//         nodes {
-//           message
-//           created_time
-//         }
-//       }
-//     }
-//   `);
-
+const FacebookPost = ({ post }) => {
   return (
-    <div>
-      {/* <h2>Les 3 derniers posts Facebook :</h2>
-      <ul>
-        {data.allFacebookPost.nodes.map((post, index) => (
-          <li key={index}>
-            <p>{post.message}</p>
-            <p>{post.created_time}</p>
-          </li>
-        ))}
-      </ul> */}
+    <div className="facebook-post">
+      <p>Nom de l'utilisateur: {post.from.name}</p>
+      <p>Date de publication: {post.created_time}</p>
+      <p>Message du post: {post.message}</p>
+      {post.child_attachments && (
+        <div className="attachments">
+          {post.child_attachments.map((attachment, index) => (
+            <img key={index} src={attachment.media.image.src} alt="Attachment" />
+          ))}
+        </div>
+      )}
+      {post.reactions && (
+        <p>Réactions: {post.reactions.summary.total_count}</p>
+      )}
     </div>
   );
-};
+}
 
-export default FacebookPosts;
+export default FacebookPost;

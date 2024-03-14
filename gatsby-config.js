@@ -6,7 +6,14 @@
 
 /**
  * @type {import('gatsby').GatsbyConfig}
+ * 
  */
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
+// const facebookPageID = "2177823652609908"; // Mettre le bon ID ici
+
 module.exports = {
   siteMetadata: {
     title: `Happy Sound 54, animez vos soirées à Toul, Nancy et toute la région Grand-Est de la France`,
@@ -16,6 +23,12 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-image`,
+    {
+      resolve: "gatsby-plugin-env-variables",
+      options: {
+        allowList: ["FB_APP_ID"], // Liste des variables à inclure
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -33,7 +46,11 @@ module.exports = {
         display: 'swap'
       }
     },
-
+    // {
+    //   resolve: "gatsby-source-facebook",
+    // supprimer ce plugin 
+    //   },
+    // },
     // {
     //   resolve: `gatsby-plugin-sitemap`,
     //   options: {
