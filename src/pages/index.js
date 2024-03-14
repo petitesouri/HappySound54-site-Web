@@ -22,11 +22,9 @@ const IndexPage = ({ children }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    // Vérifier si l'objet FB est défini
     if (typeof window !== 'undefined' && typeof window.FB !== 'undefined') {
-      // Utiliser le SDK Facebook pour récupérer les publications de la page
       window.FB.api(
-        `/${appId}/feed`, // Remplacez le numéro par l'ID de votre page Facebook
+        `/${appId}/feed`, 
         function (response) {
           if (response && !response.error) {
             setPosts(response.data);

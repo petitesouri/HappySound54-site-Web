@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby"
-import { Link } from "gatsby"
+import { Link } from "gatsby";
+import { useLocation } from "@reach/router";
 
 import Modal from "../components/modal";
 import Logo from "../images/Logo.png"
@@ -12,6 +13,7 @@ import SmileyAccueil from "../images/Smiley4.png";
 const Header = ({ siteTitle }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalType, setModalType] = useState('');
+  const location = useLocation();
 
   const data = useStaticQuery(graphql`
   query SiteTitleQuery {
@@ -68,7 +70,7 @@ const closeModal = () => setIsOpen(false);
     // { text: "Deferred Static Generation", url: "using-dsg" },
   ];
 
-  const isHomePage = window.location.pathname === '/';
+  const isHomePage = location.pathname === '/';
 
   return (
   <header>
