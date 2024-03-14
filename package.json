@@ -19,6 +19,7 @@
   "devDependencies": {
     "dotenv": "^16.4.5",
     "gatsby-plugin-env-variables": "^2.3.0",
+    "gh-pages": "^6.1.1",
     "prettier": "^2.8.8"
   },
   "keywords": [
@@ -27,6 +28,7 @@
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
+    "deploy": "gatsby build && gh-pages -d public -b gh-pages",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
     "start": "gatsby develop",
