@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby";
 import { useLocation } from "@reach/router";
+import { StaticImage } from "gatsby-plugin-image"; 
 
 import Modal from "../components/modal";
-import Logo from "../images/Logo-HS54.png"
+// import Logo from "../images/Logo-HS54.png"
 import SmileyMariage from "../images/Smiley1.png";
 import SmileySoiree from "../images/Smiley2.png";
 import SmileyEvenement from "../images/Smiley3.png";
@@ -75,9 +76,11 @@ const closeModal = () => setIsOpen(false);
   return (
   <header>
     <h1> {siteTitle || data.site.siteMetadata.title}</h1>
-    
     <Link to="/" className="header-link">
-      <img className="header-link__logo" src={Logo} alt="Logo" />
+      <StaticImage 
+        className="header-link__logo" 
+        src="../images/Logo-HS54.png" alt="Logo" 
+      />
     </Link>
     <nav className="header-nav">
       <li className={isHomePage ? 'header-nav__link-button active' : 'header-nav__link-button'}>

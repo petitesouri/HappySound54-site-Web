@@ -1,7 +1,8 @@
 import React from "react";
+import { StaticImage } from "gatsby-plugin-image";
 
-import Logo from "../images/Logo-HS54.png";
-import OWD from "../images/Logo-OWD.webp"
+// import Logo from "../images/Logo-HS54.png";
+// import OWD from "../images/Logo-OWD.webp"
 
 const Footer = () => {
 
@@ -20,7 +21,10 @@ const Footer = () => {
                         <li>Tél : 06 06 06 06 06</li>
                     </ul>
                 </section>    
-                <img src={Logo} alt="Happy Sound 54" />       
+                <StaticImage
+                    src="../images/Logo-HS54.png" 
+                    alt="Happy Sound 54" 
+                    />       
                 <section className="footer-right-section">
                     <ul>                
                         <li>
@@ -34,7 +38,11 @@ const Footer = () => {
             </div>
             <a href="https://officewebdesign.fr/" target="blank" rel="noopener noreferrer">
                 Site réalisé par
-                <img className="logo-OWD" src={OWD} alt="Office Web Design"/>
+                <StaticImage
+                    className="logo-OWD" 
+                    src="../images/Logo-OWD.webp"
+                    alt="Office Web Design"
+                    />
             </a>
         </footer>
     )
