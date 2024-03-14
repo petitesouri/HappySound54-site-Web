@@ -12,7 +12,6 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-// const facebookPageID = "2177823652609908"; // Mettre le bon ID ici
 
 module.exports = {
   siteMetadata: {

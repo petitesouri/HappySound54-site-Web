@@ -1,7 +1,7 @@
 import React from "react";
 
-import Logo from "../images/Logo.png";
-import OWD from "../images/Logo Office Web Design.webp"
+import Logo from "../images/Logo-HS54.png";
+import OWD from "../images/Logo-OWD.webp"
 
 const Footer = () => {
 

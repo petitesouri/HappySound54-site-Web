@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import { useLocation } from "@reach/router";
 
 import Modal from "../components/modal";
-import Logo from "../images/Logo.png"
+import Logo from "../images/Logo-HS54.png"
 import SmileyMariage from "../images/Smiley1.png";
 import SmileySoiree from "../images/Smiley2.png";
 import SmileyEvenement from "../images/Smiley3.png";
